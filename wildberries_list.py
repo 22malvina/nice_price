@@ -29,10 +29,15 @@ numners = list_number_pages(count_page)
 print('numners = ')
 print(numbers)
 
-list_urls = []
-for n in numbers:
-    url_page = url + str(n) # dddd + ffff
-    list_urls.append(url_page)
+def list_urls_final(nembers, url):
+    list_urls = []
+    for n in numbers:
+        url_page = url + str(n) # dddd + ffff
+        list_urls.append(url_page)
+    return list_urls
+
+list_urls = list_urls_final(numbers, url)
+
 
 
 for url_new in list_urls:
