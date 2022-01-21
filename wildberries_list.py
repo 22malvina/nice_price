@@ -24,7 +24,7 @@ def list_number_pages(count_page):
         i = i + 1
     return numbers
 
-numners = list_number_pages(count_page)
+numbers = list_number_pages(count_page)
 
 print('numners = ')
 print(numbers)
@@ -39,45 +39,26 @@ def list_urls_final(nembers, url):
 list_urls = list_urls_final(numbers, url)
 
 
-
-for url_new in list_urls:
+def get_prices_from_page(url_new):
     page = requests.get(url_new)
     print(page.status_code)
-    soup = BeautifulSoup(page.text, "html.parser")
-    allPrice = soup.findAll('ins', class_='lower-price')
-
     prices = []
+    soup = BeautifulSoup(page.text, "html.parser")
 
-    #print(allPrice)
+    allPrice = soup.findAll('ins', class_='lower-price')
     for one_price in allPrice:
-        #print(data)
-        #print(one_price.text)
         prices.append(one_price.text)
-
-        #result = re.findall(r'\d+', one_price.text)
-        #print(result)
-
-        #print(result[0] + result[1])
-        #print('__'.join(result))
-        #print(''.join(result))
-
-        #price_str = result[0] + result[1]
-        #print(price_str)
-        #print(type(price_str))
-        #
-        #price_int = int(price_str)
-        #print(price_int)
-        #print(type(price_int))
-
 
     allPrice1 = soup.findAll('span', class_='lower-price')
     for one_price in allPrice:
-        #print(one_price.text)
-
         prices.append(one_price.text)
 
-    print(len(prices))
+    return prices
 
+
+for url_k in list_urls:
+    prices = get_prices_from_page(url_k)
+    print(len(prices))
     #prices.sort()
     #print(prices)
 
