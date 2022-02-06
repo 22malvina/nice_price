@@ -1,12 +1,11 @@
 from bs4 import BeautifulSoup
 import requests
 
+# artem branch 
 
 url = 'http://mignews.com/mobile'
 
-
 page = requests.get(url)
-
 
 print(page.status_code)
 
