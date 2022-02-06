@@ -28,7 +28,7 @@ def get_prices_from_page(url_new):
         prices.append(one_price.text)
 
     allPrice1 = soup.findAll('span', class_='lower-price')
-    for one_price in allPrice:
+    for one_price in allPrice1:
         prices.append(one_price.text)
 
     return prices
@@ -50,4 +50,4 @@ for url_k in list_urls:
     prices = get_prices_from_page(url_k)
     print(len(prices))
     #prices.sort()
-    #print(prices)
+    print(prices)
