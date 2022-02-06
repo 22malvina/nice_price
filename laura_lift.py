@@ -3,6 +3,7 @@ import requests
 # test Kate
 
 # artem branch 
+# dima
 
 url = 'http://mignews.com/mobile'
 
