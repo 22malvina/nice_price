@@ -9,7 +9,7 @@ print(page.status_code)
 soup = BeautifulSoup(page.text, "html.parser")
 allPrice = soup.findAll('div', class_='product-price css-11s12ax is--current-price css-tpaepq')
 allPrice1 = soup.findAll('h1', class_='headline-2 css-zis9ta')
-
+#hello
 
 
 
