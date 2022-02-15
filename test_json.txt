@@ -1,0 +1,6 @@
+{
+    "president": {
+        "name": "blue",
+        "year": 1995
+    }
+}

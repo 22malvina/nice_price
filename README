@@ -1,0 +1,96 @@
+Структура проекта:
+
+Dockerfile - Содержит информацию по формированию контейнера для запуска приложения
+requirements.txt - укаываем все билиотке которые надо устнановиить из pip, и с к оторыми мы работаем
+src - папка с модулями проекта
+
+
+Как запстить скрипт:
+
+* собрать контейнер
+docker build -t python-nice-price .
+* запстить контейнер
+docker run --rm  python-nice-price
+или
+* если не зочется каждый раз менять фаил для запуска в докер файле
+    запустить контейнер с примонтированной папкой проекта в которой наш новый питон скрипт sample.py
+docker run --rm -v с:\Users\Digital\niceprice\:/app python-nice-price python sample.py
+* тоже самое что и выше но для линукса
+docker run --rm -v $(pwd)/:/app python-nice-price python sample.py
+
+
+Работка с кодом в Git:
+
+* Создать новую ветку от основной ветки main(master) 
+* Внести измения в ветку
+* Залить ветку в наш общий репощиторий.
+* За это время основаня ветка могла ищмениться, поэтому:
+* Переключиться на мастер
+* Забрать изменния из матстреа
+* залить их в свою втеку
+* создать PUll reqvesrt через веб интерфейс
+
+
+Команды Git:
+git pull # забрать изменния
+git push # залить
+git add file.py
+git commit -m 'comtn'
+git branch # получить списко веток и увидеть ту что выбрана
+git branch dima_213213 # содать ветку
+git checkout main # переклчюиться на ветку main
+git checkout 123 # переклчюиться на ветку 123
+git merge main (если назодишьься в ветке 123)
+git diff # покажет изменния те котоыре внес но еще не закомитил
+git diff -r main # покажет разницу между текущей веткой  и веткой main
+git log # выведет лог комитов
+
+в момент мержа измений или commita
+система входим в режим редактора  и чтобы выйти нужно внести коментарии, соранить, и выйти
+входим в режим команд нажимая ESC
+shift + :
+Курсор появляется в левом нижнем углу экрана.
+введя w вы сохраните изменния
+введя q выйдите из редактора
+
+
+Python:
+
+
+Работа с json:
+
+Это переменная data являющася python словарем содержащем в кулюче еще один словарь
+data = {
+    "president": {
+        "name": "Red",
+        "year": 1990,
+    }
+}
+
+строка содержащая текст в формате json, тройные кавычки """ означают что дальше идет текст
+string_json = """
+{
+    "president": {
+        "name": "Red",
+        "year": 1990
+    }
+}
+"""
+
+import json # импорт библиотеки
+
+with open("data_file.json", "w") as write_file: # открываем фаил на запись
+    json.dump(data, write_file) # записываем переменную data преобразованную в json в фаил write_file 
+
+json_string = json.dumps(data) # созадаем строковую переменную содержащую текс в офрмате json из переменной data
+
+with open("data_file.json", "r") as read_file: 
+    data = json.load(read_file)
+
+data = json.loads(json_string)
+
+
+Работа с реквестами
+
+import requests
+response = requests.get("https://jsonplaceholder.typicode.com/todos")
