@@ -1,21 +1,20 @@
+Структура проекта:
+
 Dockerfile - Содержит информацию по формированию контейнера для запуска приложения
 requirements.txt - укаываем все билиотке которые надо устнановиить из pip, и с к оторыми мы работаем
 stc - папка с модулями проекта
+
 
 Как запстить скрипт:
 
 * собрать контейнер
 docker build -t python-nice-price .
-
 * запстить контейнер
 docker run --rm  python-nice-price
-
 или
-
 * если не зочется каждый раз менять фаил для запуска в докер файле
     запустить контейнер с примонтированной папкой проекта в которой наш новый питон скрипт sample.py
 docker run --rm -v с:\Users\Digital\niceprice\:/app python-nice-price python sample.py
-
 * тоже самое что и выше но для линукса
 docker run --rm -v $(pwd)/:/app python-nice-price python sample.py
 
@@ -54,3 +53,26 @@ shift + :
 введя w вы сохраните изменния
 введя q выйдите из редактора
 
+
+Python:
+
+
+Работа с json:
+
+import json # импорт библиотеки
+
+with open("data_file.json", "w") as write_file: # открываем фаил на запись
+    json.dump(data, write_file) # записываем переменную data преобразованную в json в фаил write_file 
+
+json_string = json.dumps(data) # созадаем строковую переменную содержащую текс в офрмате json из переменной data
+
+with open("data_file.json", "r") as read_file: 
+    data = json.load(read_file)
+
+data = json.loads(json_string)
+
+
+Работа с реквестами
+
+import requests
+response = requests.get("https://jsonplaceholder.typicode.com/todos")
