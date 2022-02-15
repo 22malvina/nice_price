@@ -59,6 +59,24 @@ Python:
 
 Работа с json:
 
+Это переменная data являющася python словарем содержащем в кулюче еще один словарь
+data = {
+    "president": {
+        "name": "Red",
+        "year": 1990,
+    }
+}
+
+строка содержащая текст в формате json, тройные кавычки """ означают что дальше идет текст
+string_json = """
+{
+    "president": {
+        "name": "Red",
+        "year": 1990
+    }
+}
+"""
+
 import json # импорт библиотеки
 
 with open("data_file.json", "w") as write_file: # открываем фаил на запись
