@@ -22,8 +22,8 @@ with open("Homework.txt", "r") as read_file:
     
 
 #data = json.loads(json_string)
-
+avg = {"avg" : 348000000} 
 with open("data_file.json", "w") as write_file: # открываем фаил на запись
-    json.dump(data, write_file)
+    json.dump(avg, write_file)
 
 
