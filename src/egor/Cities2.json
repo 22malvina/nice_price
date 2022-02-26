@@ -3,11 +3,20 @@
    	"citie_name":"Moscow",
 	 "population": 11920000,},
 	{
-	"citie_name"
-      	  	"Moscow": 11920000,      
-		"Paris": 2161000,       
-		"Kiev": 2884000,        
-		"Rome": 2873000,        
-		"Berlin": 3645000
-    		}
-	}
+	"citie_name": "Paris",
+      	  "population": 2161000,},
+	{
+	"citie_name":"Kiev",
+	 "population": 2884000,},
+	{
+	 "citie_name":"Rome",  
+	 "population": 2873000,},
+	{
+	"citie_name":"Rome",	
+	"population": 3645000,},]
+       
+		       
+		        
+		
+    		
+	
