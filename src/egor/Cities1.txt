@@ -3,7 +3,7 @@
 	{
    	"citie_name":"Moscow",
 	 "population": 11920000,
-	"area":2511},
+	"area":10000},
 	{
 	"citie_name": "Paris",
       	  "population": 2161000,
