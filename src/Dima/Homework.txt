@@ -1,9 +1,27 @@
-{
-    		"Films": {
-        		"The Green Mile": 287000000,
-        		"The Shawshank Redemption": 28000000,
-    			"Schindler's List" : 321000000,
-			"Forrest Gump" : 677000000,
-			"Intouchables" : 427000000
-    		}
-}
+[
+     		{
+        	 "Name" : "The Green Mile",
+		 "Budget" : 60000000,
+		 "Fees" : 287000000
+		 },
+		{
+		 "Name" : "The Shawshank Redemption",
+		 "Budget" : 25000000,
+		 "Fees" : 28000000
+        	 },
+		{
+		 "Name" : "Schindler's List",
+		 "Budget" : 22000000,
+		 "Fees" : 321000000
+		 },
+		{
+		 "Name" : "Forrest Gump",
+		 "Budget" : 55000000,
+		 "Fees" : 677000000
+		  },
+		{
+		 "Name" : "Intouchables",
+		 "Budget" : 10735000,
+		 "Fees" : 427000000
+		 }
+]
