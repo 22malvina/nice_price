@@ -1,0 +1,29 @@
+[
+
+	{
+   	"citie_name":"Moscow",
+	 "population": 11920000,
+	"area":10000},
+	{
+	"citie_name": "Paris",
+      	  "population": 2161000,
+	"area":105},
+	{
+	"citie_name":"Kiev",
+	 "population": 2884000,
+	"area":839},
+	{
+	 "citie_name":"Rome",  
+	 "population": 2873000,
+	"area":1285},
+	{
+	"citie_name":"Berlin",	
+	"population": 3645000,
+	"area":891}
+			
+	
+]
+
+
+
+

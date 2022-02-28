@@ -1,0 +1,18 @@
+[
+
+	{
+   	"citie_name":"Izhevsk",
+	 "population": 1234000,
+	"area":15000},
+	{
+	"citie_name": "Paris",
+      	  "population": 2161000,
+	"area":105},
+	{
+	"citie_name":"Kiev",
+	 "population": 2884000,
+	"area":839}
+	
+			
+	
+]
