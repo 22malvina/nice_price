@@ -1,0 +1,27 @@
+[
+     		{
+        	 "Name" : "The Green Mile",
+		 "Budget" : 60000000,
+		 "Fees" : 287000000
+		 },
+		{
+		 "Name" : "The Shawshank Redemption",
+		 "Budget" : 25000000,
+		 "Fees" : 28000000
+        	 },
+		{
+		 "Name" : "Schindler's List",
+		 "Budget" : 22000000,
+		 "Fees" : 321000000
+		 },
+		{
+		 "Name" : "Forrest Gump",
+		 "Budget" : 55000000,
+		 "Fees" : 677000000
+		  },
+		{
+		 "Name" : "Intouchables",
+		 "Budget" : 10735000,
+		 "Fees" : 427000000
+		 }
+]
