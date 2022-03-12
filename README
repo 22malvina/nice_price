@@ -32,6 +32,7 @@ docker run --rm -v $(pwd)/:/app python-nice-price python sample.py
 
 
 Команды Git:
+git status #Показать измененные файлы
 git pull # забрать изменния
 git push # залить
 git add file.py
