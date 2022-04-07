@@ -3,6 +3,7 @@ import requests
 import re
 import json
 
+
 #ikea.com    
 #https://www.ikea.com/ru/ru/p/   
 #https://www.ikea.com/ru/ru/p/bagis-bagis-plechiki-d-doma-ulicy-belyy-10415971/
@@ -21,7 +22,7 @@ def add_links_to_the_list_with_the_link_key_from_the_file():
     with open("ikea.json", "r") as read_file: #Открываем файл с ссылками
         data = json.load(read_file) #  В переменную доббавляем все содержимое файла      
         for i in data: # Пробегаемя по файлу
-            n = i["link"] # Достаем значение с ключом link   
+            n = i['link'] # Достаем значение с ключом link   
             # print(n)
             links_1.append(n) # Добавляем эти значения в список
     return links_1
@@ -42,7 +43,9 @@ def get_url (url):
         #print(page.status_code) # Ввыодим статус ответа при запросе этих ссылок
         #print(page.text) # Выводим текст всех ссылок
         soup=BeautifulSoup(page.text,"html.parser") # Создаем объект
-        allPrice=soup.findAll('a' ) # Ищем все html элементы с тэгом а     
+        allPrice=soup.findAll('a' )
+        #allPrice=soup.findAll('span', class_ = 'pip-price__integer'  )
+        print(allPrice)# Ищем все html элементы с тэгом а     
         for one_price in allPrice:
             #print(one_price.get('href',None))
             links_2.append(one_price.get('href',None))
@@ -95,7 +98,9 @@ def filtred_links_list(final_links_list):
     for i in final_links_list:
         if i == None:
             continue
-        elif 'ikea.com' in i:
+        elif 'ikea.com/ru/ru/p/' in i:
+            clear_final_links_list.append(i)
+        elif 'ikea.com/ru/ru/cat/' in i:
             clear_final_links_list.append(i)
     return clear_final_links_list
 
