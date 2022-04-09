@@ -4,22 +4,47 @@ import re
 import json
 
 
+def price(file):
+    with open(file, "r") as read_file: #Открываем файл с ссылками
+        
+        links_3 = []
+                
+        data = json.load(read_file) #  В переменную доббавляем все содержимое файла      
+        for i in data: # Пробегаемя по файлу
+            n = i["link"] # Достаем значение с ключом link            
+            page = requests.get(n,timeout=5) # Отправляем запрос на  ссылку переменной j          
+            soup=BeautifulSoup(page.text,"html.parser") # Создаем объект
+            #allPrice=soup.findAll('a' )
+            allPrice=soup.findAll('span', class_ = 'pip-price__integer'  )
+            #print(allPrice)
+           
+            #for one_price in allPrice:
+                        
+                #links_3.append({
+                      #  'price': one_price.text,
+                      #  'link': n})
+            price_one = 0
+            if len(allPrice) == 1:
+                price_one = allPrice[0].text
+            else:
+                print('size != 1')
+            print(price_one)
 
-with open("ikea2.json", "r") as read_file: #Открываем файл с ссылками
-    
-    links_3 = []
+            allTitle=soup.findAll('span', class_ = 'pip-header-section__title--big notranslate')
+            title_one = ''
+            if len(allTitle) == 1:
+                title_one = allTitle[0].text
+            else:
+                print('size_title != 1')
+            print(title_one)
+
+            links_3.append({'link':n,
+                            'price': price_one,
+                            'title': title_one})
             
-    data = json.load(read_file) #  В переменную доббавляем все содержимое файла      
-    for i in data: # Пробегаемя по файлу
-        n = i["link"] # Достаем значение с ключом link            
-        page = requests.get(n,timeout=5) # Отправляем запрос на  ссылку переменной j          
-        soup=BeautifulSoup(page.text,"html.parser") # Создаем объект
-        #allPrice=soup.findAll('a' )
-        allPrice=soup.findAll('span', class_ = 'pip-price__integer'  )
-        print(allPrice)  
-        for one_price in allPrice:
-                    
-            links_3.append(one_price.text)
+
+            
+    return links_3
         
         
     
@@ -123,16 +148,16 @@ def filtred_links_list(final_links_list):
             continue
         elif 'ikea.com/ru/ru/p/' in i:
             clear_final_links_list.append(i)
-        elif 'ikea.com/ru/ru/cat/' in i:
-            clear_final_links_list.append(i)
+        #elif 'ikea.com/ru/ru/cat/' in i:
+           # clear_final_links_list.append(i)
     return clear_final_links_list
 
 def size_100(final_links_list):
     mnozhestva = set(final_links_list)
     new_list = []
     for k in mnozhestva:
-        new_list.append({'link':k,
-                         'price':p})
+        new_list.append({'link':k
+                         })
     new_list_size_100 = new_list[0:100]
     return new_list_size_100
 
@@ -169,7 +194,7 @@ def sto_url_v2(spisok_url_v2):
 links_1 = add_links_to_the_list_with_the_link_key_from_the_file()
 
 #Обрезаем количество ссылок до ста
-links_1 = links_1[0:20]
+links_1 = links_1[0:5]
 
 final_links_list = get_info_from_urls_and_excluding_unnecessary(links_1)
 
@@ -182,7 +207,12 @@ new_list_size_100 = size_100(filtred_final_links_list)
 with open("ikea2.json", "w") as write_file: # открываем фаил на запись
     json.dump(new_list_size_100, write_file)
         
+#print(price('ikea2.json'))
+find_price = price('ikea2.json')
+print(find_price)
 
+with open("ikea3.json", "w") as write_file: # открываем фаил на запись
+    json.dump(find_price, write_file)
 
 #write_file = "data_file_1.json"   
 #url = "https://shop.huawei.ru/"
