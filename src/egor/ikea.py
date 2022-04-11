@@ -65,9 +65,11 @@ def price(file):
 #добавляем в список ссылки с ключом link из файла
 #формируем список ссылок из json файла
 #поиск ссылок с ключом link в файле и добавление их в список
-def add_links_to_the_list_with_the_link_key_from_the_file():
+
+def add_links_to_the_list_with_the_link_key_from_the_file(file):
     links_1 = []
-    with open("ikea.json", "r") as read_file: #Открываем файл с ссылками
+    
+    with open(file, "r") as read_file: #Открываем файл с ссылками
         data = json.load(read_file) #  В переменную доббавляем все содержимое файла      
         for i in data: # Пробегаемя по файлу
             n = i['link'] # Достаем значение с ключом link   
@@ -190,23 +192,42 @@ def sto_url_v2(spisok_url_v2):
     return  final_list_url_v2
 
 
+def update_link_in_file_from_site(path_file_read , path_file_write):
+    links_1 = add_links_to_the_list_with_the_link_key_from_the_file(path_file_read)
 
-links_1 = add_links_to_the_list_with_the_link_key_from_the_file()
+    #Обрезаем количество ссылок до ста
+    links_1 = links_1[0:2]
 
-#Обрезаем количество ссылок до ста
-links_1 = links_1[0:5]
+    final_links_list = get_info_from_urls_and_excluding_unnecessary(links_1)
 
-final_links_list = get_info_from_urls_and_excluding_unnecessary(links_1)
+    filtred_final_links_list =  filtred_links_list(final_links_list)
 
-filtred_final_links_list =  filtred_links_list(final_links_list)
+    new_list_size_100 = size_100(filtred_final_links_list)
+    
 
-new_list_size_100 = size_100(filtred_final_links_list)
+    #Вызываем функции sto_url с параметром на входе final_links_list и на выходе получаем значение , которое присваиваем в переменную urls
 
-#Вызываем функции sto_url с параметром на входе final_links_list и на выходе получаем значение , которое присваиваем в переменную urls
+    with open(path_file_write, "w") as write_file: # открываем фаил на запись
+        json.dump(new_list_size_100, write_file)
+print('этап 1')
+for i in range(0,3):
+    update_link_in_file_from_site('ikea.json','ikea2.json')
 
-with open("ikea2.json", "w") as write_file: # открываем фаил на запись
-    json.dump(new_list_size_100, write_file)
-        
+
+print('этап 2')
+update_link_in_file_from_site('ikea.json','ikea2.json')
+update_link_in_file_from_site('ikea2.json','ikea21.json')
+update_link_in_file_from_site('ikea21.json','ikea22.json')       
+
+print('этап 3')
+for i in range(0,3):
+    update_link_in_file_from_site('ikea2.json','ikea2.json')
+
+print('этап 4')
+for i in range(0,3):
+    update_link_in_file_from_site('ikea'+str(i)+'.json','ikea'+str(i+1)+'.json')
+
+    
 #print(price('ikea2.json'))
 find_price = price('ikea2.json')
 print(find_price)
